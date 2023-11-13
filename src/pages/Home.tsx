@@ -18,10 +18,12 @@ const Home = () => {
   } else {
     return (
       <>
-        <div className="container my-24">
+        <div className="container my-24" data-testid="main-container">
           <div className="flex flex-col justify-center items-center  mx-auto ">
             <div className="flex justify-between mb-10 space-y-4 w-9/12 md:w-6/12">
-              <h1 className="text-2xl font-bold">Dashboards</h1>
+              <h1 className="text-2xl font-bold" data-testid="title">
+                Dashboards
+              </h1>
               <Filter />
             </div>
             <div className="space-y-4 w-9/12 md:w-6/12 shadow-2xl px-5">

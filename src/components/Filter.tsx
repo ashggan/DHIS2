@@ -11,6 +11,7 @@ const Filter = () => {
   return (
     <>
       <select
+        id="select-type"
         className="w-40 px-4 py-2 border-b-4 border-b-main-color   focus:outline-none   "
         onChange={handleSelectChange}
       >

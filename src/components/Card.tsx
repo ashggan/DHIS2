@@ -8,20 +8,15 @@ declare type ProbsItem = {
   dashItem: Dashboard;
   index: number;
 };
-
 const Card = ({ dashItem, index }: ProbsItem) => {
-  const [activeCard, setActiveCard] = useState<number | null>(0);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
   const { starDashBoard } = useDashboardsContext();
 
-  const toggleCard = (cardNumber: number) => {
-    setActiveCard((prevActiveCard) =>
-      prevActiveCard === cardNumber ? null : cardNumber
-    );
+  const toggleCard = (index: number | null) => {
+    setActiveCard(index);
   };
 
-  const isCardActive = (cardNumber: number) => {
-    return activeCard === cardNumber;
-  };
+  const isCardActive = (cardNumber: number) => activeCard === cardNumber;
 
   const toggleStar = () => starDashBoard(dashItem.id);
 
@@ -37,12 +32,12 @@ const Card = ({ dashItem, index }: ProbsItem) => {
           >
             <FaStar size={24} />
           </button>
-          <h3 className="text-lg font-semibold">{dashItem.displayName}</h3>
+          <h3 className="text-lg font-semibold"> {dashItem.displayName}</h3>
         </div>
 
         <button
           className="flex items-center justify-center w-6 h-6 focus:outline-none"
-          onClick={() => toggleCard(index)}
+          onClick={() => toggleCard(isCardActive(index) ? null : index)}
         >
           <FaAngleUp
             size={24}
@@ -52,6 +47,7 @@ const Card = ({ dashItem, index }: ProbsItem) => {
           />
         </button>
       </div>
+
       {isCardActive(index) && (
         <div className="border-b-4 border-b-main-color rounded p-4">
           <ul>

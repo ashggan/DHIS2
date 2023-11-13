@@ -5,8 +5,9 @@ import {
 } from "../utils/types";
 import axios from "axios";
 import { Dashboard } from "../utils/dashboardsTypes";
+import { BASE_URL } from "../utils/constants";
 
-const base_url = import.meta.env.VITE_BASE_URL;
+// const base_url =
 
 const DashboardsContext = createContext({} as DashboardsContextType);
 export const useDashboardsContext = () => useContext(DashboardsContext);
@@ -24,12 +25,12 @@ export const DashboardProvider = ({
     setIsLoading(true);
     const fetchData = async () => {
       try {
-        const res = await axios.get(base_url + "dashboards.json");
+        const res = await axios.get(BASE_URL + "dashboards.json");
         const dashList = res.data.dashboards;
 
         await Promise.all(
           dashList.map(async (item: Dashboard) => {
-            const dashItem = await axios.get(base_url + item.id + ".json");
+            const dashItem = await axios.get(BASE_URL + item.id + ".json");
             item.dashboardDetail = dashItem.data;
           })
         );
