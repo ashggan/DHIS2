@@ -1,4 +1,7 @@
-# React + TypeScript + Vite
+# DHIS2Frontend Task - Option 2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-# DHIS2
+- Build a React application that fetches and renders the list of dashboards available to a DHIS2 user.
+
+## installations & setup
+
+`yarn intall ` & to run the app locall `yarn run dev`
