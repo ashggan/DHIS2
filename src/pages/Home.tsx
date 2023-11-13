@@ -4,7 +4,8 @@ import Card from "../components/Card";
 import Filter from "../components/Filter";
 
 const Home = () => {
-  const { isLoading, serverError, DashboardList } = useDashboardsContext();
+  const { isLoading, serverError, FilterDashboardList } =
+    useDashboardsContext();
 
   if (isLoading) {
     return (
@@ -24,8 +25,8 @@ const Home = () => {
               <Filter />
             </div>
             <div className="space-y-4 w-9/12 md:w-6/12 shadow-2xl px-5">
-              {DashboardList &&
-                DashboardList.map((item, index: number) => (
+              {FilterDashboardList &&
+                FilterDashboardList.map((item, index: number) => (
                   <Card key={index} dashItem={item} index={index} />
                 ))}
             </div>

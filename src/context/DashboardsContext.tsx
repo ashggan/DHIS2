@@ -35,6 +35,7 @@ export const DashboardProvider = ({
         );
 
         setDashboardList(dashList);
+        setFilterDashboardList(dashList);
         setIsLoading(false);
       } catch (error: any) {
         setServerError(error?.message);
@@ -56,17 +57,21 @@ export const DashboardProvider = ({
 
   const FliterDashboards = (name: string) => {
     if (!name) return setFilterDashboardList(DashboardList);
-    // let list = DashboardList.filter((item: Dashboard) => {
-    //   return item.dashboardDetail?.dashboardItems?.some(
-    //     (dashboardItem: any) => {
-    //       dashboardItem.hasOwnProperty(name);
-    //     }
-    //   );
-    //   console.log(item);
-    // });
+    let list = DashboardList.filter((item: Dashboard) => {
+      const items = item.dashboardDetail?.dashboardItems;
+      console.log(items?.length);
 
-    // setFilterDashboardList(list);
-    alert(name);
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].hasOwnProperty(name)) {
+            return true;
+          }
+        }
+        return false;
+      }
+    });
+
+    setFilterDashboardList(list);
   };
 
   return (
