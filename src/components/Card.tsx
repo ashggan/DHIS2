@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { DashboardItem } from "../utils/types";
-import { Dashboard } from "../utils/dashboardsTypes";
+import { Dashboard, DashboardItem } from "../utils/dashboardsTypes";
 import { FaAngleUp, FaMap, FaStar } from "react-icons/fa";
 import { useDashboardsContext } from "../context/DashboardsContext";
 import IconList from "./IconList";

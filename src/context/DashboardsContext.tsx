@@ -45,6 +45,7 @@ export const DashboardProvider = ({
     fetchData();
   }, []);
 
+  // add star functionilty
   const starDashBoard = (id: string) => {
     setDashboardList((prevDashboardList: any) =>
       prevDashboardList.map((dashboard: Dashboard) =>
@@ -53,13 +54,25 @@ export const DashboardProvider = ({
           : dashboard
       )
     );
+
+    setFilterDashboardList((prevDashboardList: any) =>
+      prevDashboardList.map((dashboard: Dashboard) =>
+        dashboard.id === id
+          ? { ...dashboard, starred: !dashboard.starred }
+          : dashboard
+      )
+    );
   };
 
+  // Filter   functionilty
+
   const FliterDashboards = (name: string) => {
+    // if name is empty
+
     if (!name) return setFilterDashboardList(DashboardList);
+
     let list = DashboardList.filter((item: Dashboard) => {
       const items = item.dashboardDetail?.dashboardItems;
-      console.log(items?.length);
 
       if (items) {
         for (let i = 0; i < items.length; i++) {

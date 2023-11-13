@@ -5,9 +5,9 @@ const Filter = () => {
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
-
     FliterDashboards(selectedValue);
   };
+
   return (
     <>
       <select
